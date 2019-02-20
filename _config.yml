@@ -1,11 +1,11 @@
 # Site settings
-author: gblatstein
-title: 
+author: Gabriel Blatstein
+title: The Journey to Become a Data Scientist
 header-img: img/home-bg.png
 email: gblatstein@gmail.com
-copyright_name: gblatstein
+copyright_name: Gabriel Blatstein
 description: > # this means to ignore newlines until "baseurl:"
-  
+  Gabe's Data Science Journey
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: 
 github_username:  gabertooth
