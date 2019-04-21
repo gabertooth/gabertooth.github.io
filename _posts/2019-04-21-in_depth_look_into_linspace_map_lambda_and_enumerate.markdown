@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "In Depth Look into linspace, map, lambda, and Enumerate"
-date:       2019-04-21 15:55:19 +0000
+date:       2019-04-21 11:55:20 -0400
 permalink:  in_depth_look_into_linspace_map_lambda_and_enumerate
 ---
 
@@ -18,7 +18,7 @@ c. endpoint=True/False: If True, stop is the last sample. Otherwise, it is not i
 d. retstep= True/False: If True, (samples, steps) where steps is the interval spacing between samples
 e. dtype=None: the data type you would like your array to output in, if not specified defaults to the original data type
 
-Example: np.linspace(0, 5, num=5, endpoint=True, restep= True, dtype= None)
+Example: np.linspace(0, 5, num=5, endpoint=True, retstep= True, dtype= None)
 
 Example Output: (array([0. , 1.25, 2.5 , 3.75, 5 ]), 1.25)
 
