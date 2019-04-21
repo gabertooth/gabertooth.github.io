@@ -1,6 +1,6 @@
 ---
 layout: post
-title:      "In Depth Look into linspace, map, lambda, and Enumerate"
+title:      "In Depth Look into linspace, map, lambda, and enumerate"
 date:       2019-04-21 11:55:20 -0400
 permalink:  in_depth_look_into_linspace_map_lambda_and_enumerate
 ---
@@ -8,7 +8,7 @@ permalink:  in_depth_look_into_linspace_map_lambda_and_enumerate
 
 This blog post will go over a few Python methods that have not been covered in the curriculum thus far.  The following methods will be explored with example code provided: linspace, map, lambda, and enumerate methods. 
 
-**1. Linspace: ** Linspace is a numpy object that returns evenly spaced numbers over a specified interval. Below is the layout with the arguements of linspace.
+**1. Linspace:  Linspace is a numpy object that returns evenly spaced numbers over a specified interval. Below is the layout with the arguements of linspace.**
 
 numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
 
@@ -22,7 +22,7 @@ Example: np.linspace(0, 5, num=5, endpoint=True, retstep= True, dtype= None)
 
 Example Output: (array([0. , 1.25, 2.5 , 3.75, 5 ]), 1.25)
 
-**2. Map: **map() function returns a list of the results after applying the given function to each item of a given iterable (list, tuple etc.)
+**2. Map: map() function returns a list of the results after applying the given function to each item of a given iterable (list, tuple etc.)**
 
 map(fun, iter): 
 
@@ -43,7 +43,7 @@ print(list(result))
 
 Essentialy this method allows you to apply a specified function across a list of iterables and is very useful when dealing with a process that is repeatable and tedious.  This allows you to do it all in one tail swoop. 
 
-**3. Lambda: **A lambda function is a small anonymous function created by a user. A lambda function can take an unlimited number of arguments(x, y, z, etc.), but can only have one expression. 
+**3. Lambda: A lambda function is a small anonymous function created by a user. A lambda function can take an unlimited number of arguments(x, y, z, etc.), but can only have one expression. **
 
 lambda arguments : expression
 
