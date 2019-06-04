@@ -1,14 +1,14 @@
 ---
 layout: post
 title:      "Mod 2 Project: Northwind Database Hypothesis Testing"
-date:       2019-06-04 19:42:46 +0000
+date:       2019-06-04 15:42:47 -0400
 permalink:  mod_2_project_northwind_database_hypothesis_testing
 ---
 
 
-The module two project was a huge step in my data science career. It cemented many data analysis techniques we learned in Module 1. In addition, I furthered my understanding of SQL and hypothesis testing. All in all, I am extremely happy with the outcome of my Module 2 project and cannot wait to continue my data science journey.
+The module two project was a huge step in my Data Science career. It cemented the statistical nalysis techniques we learned in Module 1 and 2. In addition, I furthered my understanding of SQL and hypothesis testing. All in all, I am extremely happy with the outcome of my Module 2 project and cannot wait to continue my Data Science journey.
 
-The module two project consistent of querying a mocked data base (Northwind) using SQL. With the data, I was tasked with answering one required question while coming up with three questions of my own. The freedom to choose your own question was a challenging surprise. I loved the idea of being able to formulate my own hypothesis questions to disprove but did not realize how much time and effort this would take. I think this is the exact reason I liked the module two project so much. I decided to use the ORM sqlalchemy to easily query the SQL database and specifically used the following Pandas method pd.read_sql_query() to put all of my data queries into usable pandas data frames. From there I formulated three different questions. Below are the questions my Jupyter notebook answers about the Northwind database:
+The Mod 2 project consistent of querying a mocked data base (Northwind) using SQL. With the data, I was tasked with answering one required question while coming up with three questions of my own. The freedom to choose your own question was a challenging surprise. I loved the idea of being able to formulate my own hypothesis questions to disprove, but did not realize how much time and effort this would take. I think this is the exact reason I liked the Mod 2 project so much. I decided to use the ORM sqlalchemy to easily query the SQL database and specifically used the following Pandas method pd.read_sql_query() to put all of my data queries into usable Pandas data frames. From there I formulated three different questions. Below are the questions my Jupyter notebook answers about the Northwind database:
 
 1.	Do discounts have a statistically significant effect on the number of products customers order? If so, at what level(s) of discount?
 
