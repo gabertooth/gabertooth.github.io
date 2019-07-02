@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Mod 4 Project: Time Series"
-date:       2019-07-02 01:15:53 +0000
+date:       2019-07-01 21:15:54 -0400
 permalink:  mod_4_project_time_series
 ---
 
