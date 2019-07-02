@@ -26,21 +26,20 @@ To get the above data from a csv file that was in wide format was also a challen
 
 ``df_melted=pd.melt(df, id_vars=['RegionName', 'City', 'Metro','AvgHomePrice', 'ROI'], value_vars=df.iloc[:,7:-3], var_name='Date', value_name='Price')``
 
-From there one must check for stationarity of the data.  Obviously since all the zip codes had extremely high ROI’s, we knew there would be a trend in the data. This had to be removed before we can do any sort of modeling.  I found the best method to detrend the data was to use a rolling mean subtracted from logged original data. Then I differenced the data with periods equal to 10 (this is the recommended period when dealing with financial data). To see whether or not a zip code was stationary after transformation, I used a created stationarity check function below (one for graphing and one for the Dicky Fuller test):
+From there one must check for stationarity of the data.  Obviously since all the zip codes had extremely high ROI’s, we knew there would be a trend in the data. This had to be removed before we can do any sort of modeling.  I found the best method to detrend the data was to use a rolling mean subtracted from logged original data. Then I differenced the data with periods equal to 10 (this is the recommended period when dealing with financial data). To see whether or not a zip code was stationary after transformation, I used a custom stationarity check function below (one for graphing and one for the Dicky Fuller test):
 
 ``def stationarity_check_graph(orig_df, window, zipcode): #function for stationarity through graphing a rolling mean and rolling std.
     rolling_mean= orig_df[zipcode].rolling(window=window, center= False).mean() #rolling mean
     rolling_std= orig_df[zipcode].rolling(window=window, center= False).std() #rolling std. 
-    
     fig = plt.figure(figsize=(15,6))
     orig = plt.plot(orig_df[zipcode], color='blue',label='Original') #graph original data
     mean = plt.plot(rolling_mean, color='red', label='Rolling Mean') #graph rolling mean
     std = plt.plot(rolling_std, color= 'green', label= 'Rolling Std') #graph rolling std
     plt.ylabel('Price')
     plt.legend(loc='best')
-    plt.title(zipcode)
+    plt.title(zipcode)``
     
-def stationarity_check_test(orig_df, zipcode): #Dicky Fuller test to check p-value for stationarity
+``def stationarity_check_test(orig_df, zipcode): #Dicky Fuller test to check p-value for stationarity
     dftest = adfuller(orig_df[zipcode])
     print ('Results of Dickey-Fuller Test:')
     dfoutput = pd.Series(dftest[0:4], index=['Test Statistic','p-value','#Lags Used','Number of Observations Used'])
@@ -50,7 +49,7 @@ def stationarity_check_test(orig_df, zipcode): #Dicky Fuller test to check p-val
 
 With this function I was able to use the Dicky Fuller test’s p-value to confirm stationarity. As one would expect with all the transformations, each zip code had a very low p-value indicating strong stationarity. Thus, we are now ready to model!
 
-To be honest the modeling was the easiest part. Using my googling techniques and after a few ARIMA model Youtube videos, I was ready to model my five zip codes. The models predicted the future price using the past historical data. I decided on a 1,1,0 as my order for the models. I believed this would be best, considering I got a error of around 2.1%. After confirming my model was accurate, I made the following observations. 
+To be honest the modeling was the easiest part. Using my googling techniques and after a few ARIMA model Youtube videos, I was ready to model my five zip codes. The models predicted the future price using the past historical data. I decided on a ARIMA order of 1,1,0 for the models. I believed this would be best, considering I got a error of around 2.1%. After confirming my model was accurate, I made the following observations. 
 
 1. All of the zip codes selected have around a 40 percent ROI after 10 years which is very good.  
 2. Weirdly all of the zip codes have a sort of down turn or bad couple months between 100 (8.3 years) and 150 (12.5 years) which could mean maybe there is going to be a recession. 
