@@ -132,8 +132,19 @@ def ADABOOST(X, y):
     return pd.crosstab(y_test, y_pred, rownames=['Actual Result'], colnames=['Predicted Result']) #confusion matrix
 ```
 
+The following models were run on scaled data for each of the four eras of basketball. In my analysis, I saw the accuracy along with the classification report (F1-score, precision, and recall) all increase as we progressed through the historical data. The best models were Random Forest and SVM performed on the later eras(1980-1998 and 1999-2017). Historically the two models performed around 75-80 percernt accuracy and roughly a similar 77-79 average percent for precision, recall, and F1-scores. 
 
+In my opinion, around 80 percent accuracy is very great for this dataset. Although, I wanted to try and improve it even more. I decided to reduce the position classes by combining SG/SF and PF/C. The code below helped me accomplish this: 
 
+```
+NBA_1999_2017[(NBA_1999_2017['Pos']==3)]=2 #Taking the data into three classifications instead of 5. 
+NBA_1999_2017[(NBA_1999_2017['Pos']==4)]=3
+NBA_1999_2017[(NBA_1999_2017['Pos']==5)]=3
+```
+
+The new Position column now has three data classes; 1(PG), 2(SG,SF), 3(PF/C). When I reran all of the models the results were astonishing. I found that my models both improved to 95 percent accuracy on average. With the C/PF almost always being predicted perfectly. Now what does this tell us. I believe the NBA has always been positionless, although it is now more than ever evident. I want to do further analysis and try to improve the five position class models by hyper parameter tuning and doing other preprocessing techniques. In addition, I plan to try and run models on the data . as a whole and take away the eras to see if I end up with different results. 
+
+As always there is always more you can do with your data. Data is non-exhaustive. My jounrey through Machine Learning modeling has just begun and I look forward to the future endeavors. As I feel I have just graised the service with this first project. There are mulit dimensional levels to the Data Science World. 
 
 
 
