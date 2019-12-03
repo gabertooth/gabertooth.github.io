@@ -18,11 +18,11 @@ Framework:
 
 A OSEMN framework was followed for this project:
 
-Obtain: the data from the relevant resources and stakeholders
-Scrub: Cleaning the data into formats that can be digested in Python packages such as Sklearn or NLTK. Remember the “Garbage in, garbage out” principle
-Explore: Using statistical methods and data analytic techniques explore the data to find significant patterns or trends
-Model: Construct models to predict and forecast the data. Here we focus on our target variable of the direction of the S&P 500!
-Interpret: Take the results of the analysis and model and create meaningful visualizations or presentations
+Obtain: the data from the relevant resources and stakeholders  
+Scrub: Cleaning the data into formats that can be digested in Python packages such as Sklearn or NLTK. Remember the “Garbage in, garbage out” principle  
+Explore: Using statistical methods and data analytic techniques explore the data to find significant patterns or trends  
+Model: Construct models to predict and forecast the data. Here we focus on our target variable of the direction of the   S&P 500!  
+Interpret: Take the results of the analysis and model and create meaningful visualizations or presentations  
 
 I am only going to touch on the new techniques I used for this project, that stood out the most to me. The two different lessons learned were webscraping and creating neural networks.
  
