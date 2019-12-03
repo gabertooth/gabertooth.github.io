@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "WSJ NLP S&P 500 Market Predictor"
-date:       2019-12-03 02:35:54 +0000
+date:       2019-12-02 21:35:55 -0500
 permalink:  wsj_nlp_s_and_p_500_market_predictor
 ---
 
