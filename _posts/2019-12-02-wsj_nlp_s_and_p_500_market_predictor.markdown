@@ -33,7 +33,8 @@ First I will touch on using Beautiful soup and the automated web driver Selenium
 
 There was one small hiccup. For some reason the html tags that housed the headlines changed format in the month of June. My guess is a new coder joined the team or just a new layout was instituted at the WSJ. This just required a quick addition of a line of code which is below:
 
-`date=[] #List created for dates
+```
+date=[] #List created for dates
 headline_blurb_data= [] #Headline and subheading list
 for link in feb: 
     driver.get(str(link)) #Selenium getting the links from the provided month
@@ -47,7 +48,8 @@ for link in feb:
         date.append(str(link)[29:37])
 df_wsj=pd.DataFrame({'Date':date,'Text':headline_blurb_data}) #Creating a dataframe
 df_wsj.Date= pd.to_datetime(df_wsj.Date) #Changing the date to a date time object
-df_feb=df_wsj.merge(sp_500,how='left') #Merging into one dataframe`
+df_feb=df_wsj.merge(sp_500,how='left') #Merging into one dataframe
+```
 
 
 
@@ -56,16 +58,18 @@ Lastly, I will touch on building my first neural network. To obtain a baseline m
 
 Neural networks were another intimidating factor as I did not fully grasp the concept until the latter half of the capstone project. After countless YouTube videos, I am proud to say I have a rudimentary understanding! I decided to start with just a basic neural network with one to two layers.
 
-` model = Sequential()
+``` 
+model = Sequential()
 model.add(Embedding(MAX_NB_WORDS, EMBEDDING_DIM, input_length=X.shape[1]))
 model.add(LSTM(100, dropout=0.2, recurrent_dropout=0.2))
 model.add(Dense(2, activation='sigmoid'))
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-print(model.summary())`
+print(model.summary())
+```
 
 From there, I decided to add a LSTM model as this seemed practical due to the nature of classification. The previous day's direction of the S&P 500 could help predict the following day. Along with this I added multiple dense layers going in factors of 8 per best practices. 
 
-`model = Sequential()
+```model = Sequential()
 model.add(Embedding(MAX_NB_WORDS, EMBEDDING_DIM, input_length=X.shape[1]))
 model.add(LSTM(120, dropout=0.2, recurrent_dropout=0.2))
 model.add(Dense(24, activation='sigmoid'))
@@ -73,7 +77,8 @@ model.add(Dense(16, activation='sigmoid'))
 model.add(Dense(8, activation='sigmoid'))
 model.add(Dense(2, activation='sigmoid'))
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-print(model.summary())`
+print(model.summary())
+```
 
 The one problem I ran into was the fact that you really do not know what the neural network is actually doing within the different layers. This is where the black box saying comes into play. Unfortunately, I only was able to increase my accuracy from 62.8% to 65.1%. The real win was decreasing the loss function from .744 to .650. All in all this was a great experience and I am very pleased with the results of my capstone and the Data Science Journey I have just finished. Although as they say every ending has a new beginning and I can not wait!  
 
