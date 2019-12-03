@@ -6,7 +6,7 @@ permalink:  wsj_nlp_s_and_p_500_market_predictor
 ---
 
 
-I have finally made it! The end of my Flatiron education. To finish it off a capstone related to two of my favorite things, the WSJ and the economy. I am very proud of my capstone and believe it encompasses a multitude of the python capabilities I possess. This last project cemented my Python understanding. Now for all of the details surrounding my capstone project. 
+I have finally made it! The end of my Flatiron education. To finish it all off a capstone project related to two of my favorite things, the WSJ and the economy. I am very proud of my capstone and believe it encompasses a multitude of the python capabilities I possess. This last project cemented my Python understanding. Now, for all of the details surrounding my capstone project and what impactful lessons I learned. 
 
 Originally the idea was to create a classification model for newspaper/media websites to decide whether the articles or headlines were right or left leaning.   
 
@@ -22,21 +22,24 @@ Obtain: the data from the relevant resources and stakeholders
 
 Scrub: Cleaning the data into formats that can be digested in Python packages such as Sklearn or NLTK. Remember the “Garbage in, garbage out” principle 
 
-Explore: Using statistical methods and data analytic techniques explore the data to find significant patterns or trends
+Explore: Using statistical methods and data analytic techniques explore the data
 
 Model: Construct models to predict and forecast the data. Here we focus on our target variable of the direction of the   S&P 500!  
 
 Interpret: Take the results of the analysis and model and create meaningful visualizations or presentations  
 
-I am only going to touch on the new techniques I used for this project, that stood out the most to me. The two different lessons learned were webscraping and creating neural networks.
+I am only going to touch on the new techniques I used for this project, that stood out the most to me. The two different lessons learned were webscraping and the construction of neural networks.
  
 __Text Data Web Scraping__
 
 I was very intimidated by this exercise, as I did not fully grasp NLP or webscraping (BeautifulSoup) when we first learned these lessons in the Flatiron curriculum. I can proudly say I fully understand these concepts now and am not afraid to use my python powers! 
 
-First I will touch on using Beautiful soup and the automated web driver Selenium. With these two packages I was able to automate the webscraping of all of the WSJ text data. BeautifulSoup was intimidating at first, but once I buckled down and figured out what html tags I really needed to look for, it was not hard at all! This also can be attributed to selenium, which enabled me to individually navigate to each days WSJ homepage. This allowed me to target the html tags from each web page. From there Beautiful soup was used to only pull the text data from the headlines, subheadings, and bullets on the front page.
+First I will touch on using Beautiful soup and the automated web driver Selenium. With these two packages I was able to automate the webscraping of all of the WSJ text data. BeautifulSoup was intimidating at first, but once I buckled down and figured out what html tags were needed, it was not hard at all! This also can be attributed to Selenium, which enabled me to individually navigate to each days WSJ homepage. This allowed me to target the html tags from each web page. From there Beautiful soup was used to only pull the text data from the headlines, subheadings, and bullets on the front page.
 
 There was one small hiccup. For some reason the html tags that housed the headlines changed format in the month of June. My guess is a new coder joined the team or just a new layout was instituted at the WSJ. This just required a quick addition of a line of code which is below:
+
+
+Original Webscraping/Selenium Code:
 
 ```
 date=[] #List created for dates
@@ -54,6 +57,33 @@ for link in feb:
 df_wsj=pd.DataFrame({'Date':date,'Text':headline_blurb_data}) #Creating a dataframe
 df_wsj.Date= pd.to_datetime(df_wsj.Date) #Changing the date to a date time object
 df_feb=df_wsj.merge(sp_500,how='left') #Merging into one dataframe
+```
+
+After Month of June: 
+
+```
+date=[] 
+headline_blurb_data= [] 
+for link in jul: 
+    driver.get(str(link)) 
+    my_html= driver.page_source
+    soup= BeautifulSoup(my_html, 'html.parser')
+    for div in soup.findAll('a', {'class': 'wsj-headline-link'}): 
+        headline_blurb_data.append(div.contents[0])
+        date.append(str(link)[29:37])
+    for div in soup.findAll('p', {'class':'wsj-summary'}): #Getting all the headlines 
+        headline_blurb_data.append(div.text)
+        date.append(str(link)[29:37])
+    for div in soup.find_all('p', {'class': 'WSJTheme--summary--12br5Svc'}):
+        headline_blurb_data.append(div.text)
+        date.append(str(link)[29:37])
+    for div in soup.find_all('h3'):
+        headline_blurb_data.append(div.text)
+        date.append(str(link)[29:37])
+df_wsj=pd.DataFrame({'Date':date,'Text':headline_blurb_data}) 
+df_wsj.Date= pd.to_datetime(df_wsj.Date) 
+df_jul=df_wsj.merge(sp_500,how='left')  
+df_jul=df_jul.ffill(axis=0)
 ```
 
 
