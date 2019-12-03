@@ -18,15 +18,20 @@ Framework:
 
 A OSEMN framework was followed for this project:
 
-Obtain: the data from the relevant resources and stakeholders  
-Scrub: Cleaning the data into formats that can be digested in Python packages such as Sklearn or NLTK. Remember the “Garbage in, garbage out” principle  
-Explore: Using statistical methods and data analytic techniques explore the data to find significant patterns or trends  
+Obtain: the data from the relevant resources and stakeholders
+
+Scrub: Cleaning the data into formats that can be digested in Python packages such as Sklearn or NLTK. Remember the “Garbage in, garbage out” principle 
+
+Explore: Using statistical methods and data analytic techniques explore the data to find significant patterns or trends
+
 Model: Construct models to predict and forecast the data. Here we focus on our target variable of the direction of the   S&P 500!  
+
 Interpret: Take the results of the analysis and model and create meaningful visualizations or presentations  
 
 I am only going to touch on the new techniques I used for this project, that stood out the most to me. The two different lessons learned were webscraping and creating neural networks.
  
 __Text Data Web Scraping__
+
 I was very intimidated by this exercise, as I did not fully grasp NLP or webscraping (BeautifulSoup) when we first learned these lessons in the Flatiron curriculum. I can proudly say I fully understand these concepts now and am not afraid to use my python powers! 
 
 First I will touch on using Beautiful soup and the automated web driver Selenium. With these two packages I was able to automate the webscraping of all of the WSJ text data. BeautifulSoup was intimidating at first, but once I buckled down and figured out what html tags I really needed to look for, it was not hard at all! This also can be attributed to selenium, which enabled me to individually navigate to each days WSJ homepage. This allowed me to target the html tags from each web page. From there Beautiful soup was used to only pull the text data from the headlines, subheadings, and bullets on the front page.
@@ -54,6 +59,7 @@ df_feb=df_wsj.merge(sp_500,how='left') #Merging into one dataframe
 
 
 __Neural Networks__
+
 Lastly, I will touch on building my first neural network. To obtain a baseline model, I used vectorization from sklearn for a basic logistic regression model. I obtained a accuracy of around 50-60 percent depending on the level of data cleaning/strategy of manipulation of the text data.
 
 Neural networks were another intimidating factor as I did not fully grasp the concept until the latter half of the capstone project. After countless YouTube videos, I am proud to say I have a rudimentary understanding! I decided to start with just a basic neural network with one to two layers.
