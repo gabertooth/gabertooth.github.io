@@ -1,7 +1,7 @@
 ---
 layout: post
-title:      "Enter your title here"
-date:       2020-04-05 19:53:47 +0000
+title:      "Reg Ex Begginners Guide"
+date:       2020-04-05 15:53:48 -0400
 permalink:  enter_your_title_here
 ---
 
