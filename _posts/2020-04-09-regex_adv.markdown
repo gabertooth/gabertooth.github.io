@@ -1,0 +1,35 @@
+---
+layout: post
+title:      "Regex Adv."
+date:       2020-04-09 13:17:51 +0000
+permalink:  regex_adv
+---
+
+
+Going over more advanced syntax for RegEx. The following article will explore these advanced techniques syntax and methods.
+
+re is a package for making regular expressions easy, such as the re.I method. This method allows us to ignore case sensitivity. So something like SQL, Sql, or sql will all be counted as one SQL. 
+
+Capture groups can help us extract different regular expressions that may vary say like different versions of software or kinds of software (Ex: SQL vs. NoSQL or Python 3 and Python 2 
+
+
+Lookarounds: there are four type of lookarounds - Positive Lookahead and Negative Lookahead along with Positive Lookbehind and Negative Lookbehind  
+
+Syntax is as follows:
+Positive Lookahead: zzz(?=abc) Matches zzz only when it is followed by abc  
+Negative Lookahead zzz(?!abc) Matches zzz only when it is not followed by abc  
+
+Positive Lookbehind (?<=abc)zzz Matches zzz only when it is preceded by abc   
+Negative Lookbehind (?<!abc)zzz Matches zzz only when it is not preceded by abc
+
+Cheat Sheet:
+
+-Inside the parentheses, the first character of a lookaround is always ?.  
+-If the lookaround is a lookbehind, the next character will be <, which you can think of as an arrow head pointing behind the match.  
+-The next character indicates whether the lookaround is positive (=) or negative (!).  
+
+Backreferences: A way to identify capture groups that may repeat. (\w)\1 so this is any two word characters repeating. The \1 is key here.
+
+e.sub function: This looks like re.sub(pattern, repl, string, flags=0) and when working with pandas use this Series.str.replace(pat, repl, flags=0)
+
+Multiple Capture Groups and Naming: You can specify multiple capture groups by just using multiple single groups like so (XXX)(XXX) this will capture multiple regexs. In addition you can name any regex by doing this ?P<NAME> followed by your capture group this will name it and make it easier to put into a dataframe.....the names become the column names!
